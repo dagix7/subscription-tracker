@@ -1,21 +1,14 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from 'express';
+import { PORT} from './config/env.js';
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-   
-var app = express();
-  S
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-module.exports = app;
-//testing commit
+
+app.get('/', (req, res) => {
+  res.send('Welcome to Dagis world (from  the back end)');
+}) ;
+
+app.listen( PORT , hostname, () => {
+  console.log(`Server is running on port ${PORT}`);
+}); 
